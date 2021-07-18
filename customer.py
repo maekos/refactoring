@@ -33,3 +33,14 @@ class Customer:
         for rental in self.rentals:
             result += rental.get_frequent_renter_points()
         return result
+
+    def html_statements(self):
+        frequent_renter_points = 0
+        result = "<H1>Rental record for <EM>{}</EM></H1><P>\n".format(self.name)
+        for rental in self.rentals:
+            result += "{}: {}\n".format(rental.get_movie().get_title(), str(rental.get_charge()))
+
+        # Add footer lines
+        result += "<P>Amount owed is <EM>${}</EM>\n".format(self.get_total_charge())
+        result += "You earned {} frequent renter points<P>".format(self.get_total_frequent_renter_points())
+        return result
