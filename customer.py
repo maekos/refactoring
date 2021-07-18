@@ -32,16 +32,16 @@ class Customer:
         return result
 
     def amount_for(self, rental):
-        this_amount = 0
+        result = 0
         code = rental.get_movie().get_price_code()
         if code == Movie.REGULAR:
-            this_amount += 2
+            result += 2
             if rental.get_days_rented() > 2:
-                this_amount += (rental.get_days_rented() - 2) * 1.5
+                result += (rental.get_days_rented() - 2) * 1.5
         if code == Movie.NEW_RELEASE:
-            this_amount += rental.get_days_rented() * 3
+            result += rental.get_days_rented() * 3
         if code == Movie.CHILDRENS:
-            this_amount += 1.5
+            result += 1.5
             if rental.get_days_rented() > 3:
-                this_amount += (rental.get_days_rented() - 3) * 1.5
-        return this_amount
+                result += (rental.get_days_rented() - 3) * 1.5
+        return result
