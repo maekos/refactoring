@@ -16,11 +16,7 @@ class Customer:
         frequent_renter_points = 0
         result = "Rental record for {}\n".format(self.name)
         for rental in self.rentals:
-
-            frequent_renter_points += 1
-            if rental.get_movie().get_price_code() == Movie.NEW_RELEASE and rental.get_days_rented() > 1:
-                frequent_renter_points += 1
-
+            frequent_renter_points += rental.get_frequent_renter_points()
             result += "{}: {}\n".format(rental.get_movie().get_title(), str(rental.get_charge()))
             total_amount += rental.get_charge()
 
